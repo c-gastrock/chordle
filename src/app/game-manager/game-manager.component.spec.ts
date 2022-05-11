@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GuessHistoryComponent } from './guess-history.component';
+import { GameManagerComponent } from './game-manager.component';
 
-describe('GuessHistoryComponent', () => {
-  let component: GuessHistoryComponent;
-  let fixture: ComponentFixture<GuessHistoryComponent>;
+describe('GameManagerComponent', () => {
+  let component: GameManagerComponent;
+  let fixture: ComponentFixture<GameManagerComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GuessHistoryComponent ]
+      declarations: [ GameManagerComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GuessHistoryComponent);
+    fixture = TestBed.createComponent(GameManagerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

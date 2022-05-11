@@ -5,12 +5,12 @@
 export class Chord {
 
   root: string;
-  quality: "+" | "" | "o"; // quality symbol to display
+  quality: "+" | "min" | "maj" | "o"; // quality symbol to display
   inversion: 0 | 1 | 2 | 3; // root position = 0
 
   constructor(){
     this.root = "-";
-    this.quality = "";
+    this.quality = "maj";
     this.inversion = 0;
   }
 
@@ -22,11 +22,11 @@ export class Chord {
         this.root = this.root.toLowerCase();
         break;
       case('min'):
-        this.quality = "";
+        this.quality = "min";
         this.root = this.root.toLowerCase();
         break;
       case('maj'):
-        this.quality = "";
+        this.quality = "maj";
         this.root = this.root.toUpperCase();
         break;
       case('aug'):
@@ -38,19 +38,19 @@ export class Chord {
 
   setRoot(root: string){
     switch(root){
-      case('1'): this.root = "i";
+      case('1'): this.root = this.quality == ("maj" || "+") ? "I" : "i";
         break;
-      case('2'): this.root = "ii";
+      case('2'): this.root = this.quality == ("maj" || "+") ? "II" : "ii";
         break;
-      case('3'): this.root = "iii";
+      case('3'): this.root = this.quality == ("maj" || "+") ? "III" : "iii";
         break;
-      case('4'): this.root = "iv";
+      case('4'): this.root = this.quality == ("maj" || "+") ? "IV" : "iv";
         break;
-      case('5'): this.root = "v";
+      case('5'): this.root = this.quality == ("maj" || "+") ? "V" : "v";
         break;
-      case('6'): this.root = "vi";
+      case('6'): this.root = this.quality == ("maj" || "+") ? "VI" : "vi";
         break;
-      case('7'): this.root = "vii";
+      case('7'): this.root = this.quality == ("maj" || "+") ? "VII" : "vii";
     }
   }
 
