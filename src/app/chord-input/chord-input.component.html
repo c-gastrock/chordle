@@ -1,0 +1,8 @@
+<div id="chord-row">
+    <div class="chord-box"
+    *ngFor="let chord of chords; let i = index"
+    [ngClass]="{'selected' : i == selected}">
+        {{ chord.root }}{{ chord.quality }}
+    </div>
+</div>
+
