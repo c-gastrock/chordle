@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ChordInputComponent } from '../chord-input/chord-input.component';
 import { ChordComponent } from '../chord/chord.component';
 
 @Component({
@@ -8,11 +9,13 @@ import { ChordComponent } from '../chord/chord.component';
 })
 export class GameManagerComponent implements OnInit {
 
-  rows: Array<ChordComponent>;
+  rows: Array<Array<ChordComponent>>;
+  userInput: ChordInputComponent;
   activeRow: number;
 
   constructor() {
-    this.rows = new Array<ChordComponent>(6);
+    this.rows = new Array<Array<ChordComponent>>(6);
+    this.userInput = new ChordInputComponent();
     this.activeRow = 0;
   }
 
@@ -21,9 +24,12 @@ export class GameManagerComponent implements OnInit {
   }
 
   submitGuess(e: KeyboardEvent): void {
-    if(e.key == "Enter"){ 
-
+    if(e.key != "Enter"){
+      return;
     }
-  }
 
+    this.rows[this.activeRow] = this.userInput.chords;
+    this.activeRow++;
+    this.userInput = new ChordInputComponent();
+  }
 }

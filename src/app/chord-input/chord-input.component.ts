@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ChordComponent } from '../chord/chord.component';
 
 @Component({
@@ -8,7 +8,7 @@ import { ChordComponent } from '../chord/chord.component';
 })
 export class ChordInputComponent implements OnInit {
 
-  chords: Array<ChordComponent>;
+  @Input()chords: Array<ChordComponent>;
   selected: number;
   numChords: number;
 
@@ -16,14 +16,20 @@ export class ChordInputComponent implements OnInit {
     this.selected = 0;
     this.numChords = 5;
     this.chords = [];
-
-    for (let i: number = 0; i < this.numChords; i++){
-      this.chords.push(new ChordComponent());
-    }
   }
 
   ngOnInit(): void {
-    document.addEventListener("keydown", (e)=>this.parseKeyboard(e));
+    for (let i: number = 0; i < this.numChords; i++){
+      this.chords.push(new ChordComponent());
+    }
+    document.addEventListener("keydown", (e) => this.parseKeyboard(e));
+  }
+
+  reset(): void {
+    this.selected = 0;
+    for (let i: number = 0; i < this.numChords; i++){
+      this.chords[i] = new ChordComponent();
+    }
   }
 
   /**
