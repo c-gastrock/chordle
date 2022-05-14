@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Chord } from '../chord/chord';
+import { ChordComponent } from '../chord/chord.component';
 
 @Component({
   selector: 'app-chord-input',
@@ -8,7 +8,7 @@ import { Chord } from '../chord/chord';
 })
 export class ChordInputComponent implements OnInit {
 
-  chords: Array<Chord>;
+  chords: Array<ChordComponent>;
   selected: number;
   numChords: number;
 
@@ -18,7 +18,7 @@ export class ChordInputComponent implements OnInit {
     this.chords = [];
 
     for (let i: number = 0; i < this.numChords; i++){
-      this.chords.push(new Chord());
+      this.chords.push(new ChordComponent());
     }
   }
 

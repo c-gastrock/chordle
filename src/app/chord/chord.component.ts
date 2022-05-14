@@ -1,17 +1,26 @@
+import { Component, OnInit } from '@angular/core';
 
 /**
    * Represents a standard analysis of a chord.
    */
-export class Chord {
+ @Component({
+  selector: 'app-chord',
+  templateUrl: './chord.component.html',
+  styleUrls: ['./chord.component.less']
+})
+export class ChordComponent implements OnInit{
 
   root: string;
   quality: "+" | "min" | "maj" | "o"; // quality symbol to display
   inversion: 0 | 1 | 2 | 3; // root position = 0
 
   constructor(){
-    this.root = "-";
+    this.root = "";
     this.quality = "maj";
     this.inversion = 0;
+  }
+
+  ngOnInit(): void {
   }
 
   setQuality(qualityCode: string){

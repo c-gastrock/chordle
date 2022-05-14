@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ChordComponent } from '../chord/chord.component';
 
 @Component({
   selector: 'app-game-manager',
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GameManagerComponent implements OnInit {
 
-  constructor() { }
+  rows: Array<ChordComponent>;
+  activeRow: number;
+
+  constructor() {
+    this.rows = new Array<ChordComponent>(6);
+    this.activeRow = 0;
+  }
 
   ngOnInit(): void {
     document.addEventListener("keydown", (e)=>this.submitGuess(e));

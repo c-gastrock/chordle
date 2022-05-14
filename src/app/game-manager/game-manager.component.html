@@ -1,1 +1,4 @@
-<p>game-manager works!</p>
+<div *ngFor="let row of rows; let i = index;">
+    <p *ngIf="i != activeRow">TEST</p>
+    <app-chord-input *ngIf="i == activeRow"></app-chord-input>
+</div>

@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ChordInputComponent } from './chord-input/chord-input.component';
 import { GameManagerComponent } from './game-manager/game-manager.component';
+import { ChordComponent } from './chord/chord.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     ChordInputComponent,
+    ChordComponent,
     GameManagerComponent
   ],
   imports: [
