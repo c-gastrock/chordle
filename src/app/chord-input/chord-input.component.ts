@@ -12,6 +12,8 @@ export class ChordInputComponent implements OnInit {
   selected: number;
   numChords: number;
 
+  parser = (e: KeyboardEvent) => this.parseKeyboard(e);
+
   constructor() {
     this.selected = 0;
     this.numChords = 5;
@@ -22,14 +24,13 @@ export class ChordInputComponent implements OnInit {
     for (let i: number = 0; i < this.numChords; i++){
       this.chords.push(new ChordComponent());
     }
-    document.addEventListener("keydown", (e) => this.parseKeyboard(e));
+    //document.addEventListener("keydown", (e) => this.parseKeyboard(e));
+    document.addEventListener("keydown", this.parser);
   }
 
   reset(): void {
-    this.selected = 0;
-    for (let i: number = 0; i < this.numChords; i++){
-      this.chords[i] = new ChordComponent();
-    }
+    document.removeEventListener("keydown", this.parser);
+    document.addEventListener("keydown", this.parser);
   }
 
   /**

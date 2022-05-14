@@ -21,6 +21,13 @@ export class GameManagerComponent implements OnInit {
 
   ngOnInit(): void {
     document.addEventListener("keydown", (e)=>this.submitGuess(e));
+
+    for (let i = 1; i < 6; i++){
+      this.rows[i] = new Array<ChordComponent>(5);
+      for (let j = 0; j < 5; j++){
+        this.rows[i][j] = new ChordComponent();
+      }
+    }
   }
 
   submitGuess(e: KeyboardEvent): void {
@@ -30,6 +37,8 @@ export class GameManagerComponent implements OnInit {
 
     this.rows[this.activeRow] = this.userInput.chords;
     this.activeRow++;
+
+    this.userInput.reset();
     this.userInput = new ChordInputComponent();
   }
 }
