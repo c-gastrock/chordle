@@ -1,11 +1,6 @@
-<div class="chord-row">
-    <div class="chord-box"
-    *ngFor="let chord of chords; let i = index"
-    [ngClass]="{'selected' : i == selected}">
-        {{ chord.root }}
-        <ng-template [ngIf]="(chord.quality != 'maj') && (chord.quality != 'min')">
-            <div class="custom-sup">{{ chord.quality }}</div>
-        </ng-template>
-    </div>
+<div class="chord-box">
+    {{ root }}
+    <ng-template [ngIf]="(quality != 'maj') && (quality != 'min')">
+        <div class="custom-sup">{{ quality }}</div>
+    </ng-template>
 </div>
-

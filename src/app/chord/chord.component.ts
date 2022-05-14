@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 /**
    * Represents a standard analysis of a chord.
@@ -10,9 +10,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChordComponent implements OnInit{
 
-  root: string;
-  quality: "+" | "min" | "maj" | "o"; // quality symbol to display
-  inversion: 0 | 1 | 2 | 3; // root position = 0
+  // Allows ChordInputComponent to alter ChordComponent's values in view.
+  @Input() root: string;
+  @Input() quality: "+" | "min" | "maj" | "o"; // quality symbol to display
+  @Input() inversion: 0 | 1 | 2 | 3; // root position = 0
 
   constructor(){
     this.root = "";
