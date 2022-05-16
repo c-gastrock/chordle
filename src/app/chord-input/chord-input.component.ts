@@ -42,22 +42,23 @@ export class ChordInputComponent implements OnInit {
    * correspond to dim/min/maj/aug.
    * 
    * @example
-   * TODO
+   * // Selects a chord to edit to be a minor IV chord (iv).
+   * USER PRESSES: 'ArrowRight' > '4' > 'W' (or 'W' > '4'; order does not matter).
    */
 
   parseKeyboard(input: KeyboardEvent): void{
 
     let key: string = input.key;
-    let numRgx: RegExp = /[1234567]/; // 7 chords instead of \d
+
+    // Parse for input categories (root input, chord quality, selecting which chord to edit, etc.)
+    let rootRgx: RegExp = /[1234567]/;
     let qualityRgx: RegExp = new RegExp(/[qwer]/, "i");
     let selectRgx: RegExp = new RegExp(/(ArrowLeft)|(ArrowRight)/);
 
-    // Handle root input
-    if (numRgx.test(key)){
+    if (rootRgx.test(key)){
       this.chords[this.selected].setRoot(key);
     }
 
-    // Handle quality input
     if (qualityRgx.test(key)){
       switch(key.toLowerCase()){
         case('q'):
@@ -75,7 +76,6 @@ export class ChordInputComponent implements OnInit {
       }
     }
 
-    // Change selected chord
     if (selectRgx.test(key)){
       key == "ArrowLeft" ? this.selectChord("left") : this.selectChord("right");
     }
