@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { ChordInputComponent } from '../chord-input/chord-input.component';
 import { ChordComponent } from '../chord/chord.component';
 
@@ -9,8 +9,10 @@ import { ChordComponent } from '../chord/chord.component';
 })
 export class GameManagerComponent implements OnInit {
 
+  @ViewChild(ChordInputComponent)
+    userInput: ChordInputComponent;
+
   rows: Array<Array<ChordComponent>>;
-  userInput: ChordInputComponent;
   activeRow: number;
 
   constructor() {
@@ -36,9 +38,7 @@ export class GameManagerComponent implements OnInit {
     }
 
     this.rows[this.activeRow] = this.userInput.chords;
+    console.log(this.rows[this.activeRow]);
     this.activeRow++;
-
-    this.userInput.reset();
-    this.userInput = new ChordInputComponent();
   }
 }

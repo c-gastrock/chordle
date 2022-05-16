@@ -8,7 +8,7 @@ import { ChordComponent } from '../chord/chord.component';
 })
 export class ChordInputComponent implements OnInit {
 
-  @Input()chords: Array<ChordComponent>;
+  chords: Array<ChordComponent>;
   selected: number;
   numChords: number;
 
@@ -29,8 +29,9 @@ export class ChordInputComponent implements OnInit {
   }
 
   reset(): void {
-    document.removeEventListener("keydown", this.parser);
-    document.addEventListener("keydown", this.parser);
+    this.selected = 0;
+    //document.removeEventListener("keydown", this.parser);
+    //document.addEventListener("keydown", this.parser);
   }
 
   /**
@@ -45,6 +46,7 @@ export class ChordInputComponent implements OnInit {
    */
 
   parseKeyboard(input: KeyboardEvent): void{
+
     let key: string = input.key;
     let numRgx: RegExp = /[1234567]/; // 7 chords instead of \d
     let qualityRgx: RegExp = new RegExp(/[qwer]/, "i");
