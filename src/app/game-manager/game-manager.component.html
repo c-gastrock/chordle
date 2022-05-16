@@ -1,4 +1,18 @@
 <div *ngFor="let row of rows; let i = index;">
-    <p *ngIf="i != activeRow">TEST</p>
+    <div class="chord-row" *ngIf="i < activeRow">
+        <app-chord
+        *ngFor="let chord of rows[i]"
+        [root]="chord.root"
+        [quality]="chord.quality"
+        [inversion]="chord.inversion">
+        </app-chord>
+    </div>
+
     <app-chord-input *ngIf="i == activeRow"></app-chord-input>
+
+    <div class="chord-row" *ngIf="i > activeRow">
+        <app-chord
+        *ngFor="let chord of rows[i]">
+        </app-chord>
+    </div>
 </div>

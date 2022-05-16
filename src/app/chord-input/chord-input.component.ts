@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ChordComponent } from '../chord/chord.component';
 
 @Component({
@@ -12,18 +12,26 @@ export class ChordInputComponent implements OnInit {
   selected: number;
   numChords: number;
 
+  parser = (e: KeyboardEvent) => this.parseKeyboard(e);
+
   constructor() {
     this.selected = 0;
     this.numChords = 5;
     this.chords = [];
-
-    for (let i: number = 0; i < this.numChords; i++){
-      this.chords.push(new ChordComponent());
-    }
   }
 
   ngOnInit(): void {
-    document.addEventListener("keydown", (e)=>this.parseKeyboard(e));
+    for (let i: number = 0; i < this.numChords; i++){
+      this.chords.push(new ChordComponent());
+    }
+    //document.addEventListener("keydown", (e) => this.parseKeyboard(e));
+    document.addEventListener("keydown", this.parser);
+  }
+
+  reset(): void {
+    this.selected = 0;
+    //document.removeEventListener("keydown", this.parser);
+    //document.addEventListener("keydown", this.parser);
   }
 
   /**
@@ -38,6 +46,7 @@ export class ChordInputComponent implements OnInit {
    */
 
   parseKeyboard(input: KeyboardEvent): void{
+
     let key: string = input.key;
     let numRgx: RegExp = /[1234567]/; // 7 chords instead of \d
     let qualityRgx: RegExp = new RegExp(/[qwer]/, "i");

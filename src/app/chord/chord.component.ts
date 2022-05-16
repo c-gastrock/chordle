@@ -11,6 +11,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ChordComponent implements OnInit{
 
   // Allows ChordInputComponent to alter ChordComponent's values in view.
+
   @Input() root: string;
   @Input() quality: "+" | "min" | "maj" | "o"; // quality symbol to display
   @Input() inversion: 0 | 1 | 2 | 3; // root position = 0
