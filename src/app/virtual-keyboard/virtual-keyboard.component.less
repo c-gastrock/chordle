@@ -1,3 +1,7 @@
+@border-thin: 1px solid black;
+@border-med: 2px solid black;
+@border-thicc: 3px solid black;
+
 /* Applies to <app-virtual-keyboard> element. */
 :host {
     /* TODO force keyboard to bottom of screen */
@@ -27,13 +31,35 @@
 }
 
 .tab {
-    border: 1px solid black;
+    padding: 7px 40px 7px 40px;
+
+    border: @border-thin;
     border-bottom: none;
+    border-right: none;
+    border-left: none;
+    border-top-left-radius: 10px;
+
     transform: skew(-30deg);
     -webkit-transform: skew(-30deg);
     -moz-transform: skew(-30deg);
     -o-transform: skew(-30deg);
-    padding: 7px 40px 7px 40px;
+
+    background: none;
+}
+
+.tab::after {
+    content: "";
+    
+    border-bottom: @border-thin;
+    border-right: @border-thin;
+    border-bottom-right-radius: 8px;
+
+    position: absolute;
+    bottom: -1px;
+    height: 25px;
+    width: 6px;
+    left: -7px;
+    
 }
 
 .tab-text {
