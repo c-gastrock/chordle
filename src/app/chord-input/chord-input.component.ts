@@ -1,5 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ChordComponent } from '../chord/chord.component';
+
+// export abstract class InputStrategy {
+//   abstract 
+// }
 
 @Component({
   selector: 'app-chord-input',

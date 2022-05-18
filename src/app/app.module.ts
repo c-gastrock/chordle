@@ -5,14 +5,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ChordInputComponent } from './chord-input/chord-input.component';
 import { GameManagerComponent } from './game-manager/game-manager.component';
-import { ChordComponent } from './chord/chord.component'
+import { ChordComponent } from './chord/chord.component';
+import { VirtualKeyboardComponent } from './virtual-keyboard/virtual-keyboard.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     ChordInputComponent,
     ChordComponent,
-    GameManagerComponent
+    GameManagerComponent,
+    VirtualKeyboardComponent
   ],
   imports: [
     BrowserModule,

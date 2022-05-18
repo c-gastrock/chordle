@@ -1,0 +1,27 @@
+/* Applies to <app-virtual-keyboard> element. */
+:host {
+
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    text-align: center;
+
+    .row {
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+}
+
+.row > :not(.tab) {
+    border: 1px solid gray;
+    height: 50px;
+    aspect-ratio: 1 / 1;
+    padding: 10px;
+    margin: 10px 2px 0 2px;
+    border-radius: 15px;
+}
+
+.tab {
+    border: 1px solid black;
+    border-bottom: none;
+}
