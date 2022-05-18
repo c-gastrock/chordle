@@ -4,8 +4,7 @@
 
 /* Applies to <app-virtual-keyboard> element. */
 :host {
-    /* TODO force keyboard to bottom of screen */
-    margin-top: 30px;
+    margin: 10px 0  50px 0;
 }
 
 :host {
@@ -21,13 +20,23 @@
     }
 }
 
+/* Row buttons */
 .row > :not(.tab) {
-    border: 1px solid gray;
-    height: 50px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 75px;
     aspect-ratio: 1 / 1;
-    padding: 10px;
-    margin: 10px 2px 0 2px;
+
+    border: @border-med;
     border-radius: 15px;
+
+    padding: 5px;
+    margin: 10px 2px 0 2px;
+
+    font-weight: 700;
+    font-size: 20px;
 }
 
 .tab {
