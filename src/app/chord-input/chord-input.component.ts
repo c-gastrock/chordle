@@ -66,15 +66,19 @@ export class ChordInputComponent implements OnInit {
     if (qualityRgx.test(key)){
       switch(key.toLowerCase()){
         case('q'):
+        case("Dim"): // tightly coupled, change this
           this.chords[this.selected].setQuality("dim");
           break;
         case('w'):
+        case("Min"):
           this.chords[this.selected].setQuality("min");
           break;
         case('e'):
+        case("Maj"):
           this.chords[this.selected].setQuality("maj");
           break;
         case('r'):
+        case("Aug"):
           this.chords[this.selected].setQuality("aug");
           break;
       }
