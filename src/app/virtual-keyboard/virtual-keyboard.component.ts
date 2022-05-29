@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
-import { EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { KeyboardRunnerService } from '../keyboard-runner.service';
 
 @Component({
   selector: 'app-virtual-keyboard',
@@ -8,25 +8,22 @@ import { EventEmitter } from '@angular/core';
 })
 export class VirtualKeyboardComponent implements OnInit {
 
-  @Output()
-  keyboardClicked: EventEmitter<KeyboardEvent> = new EventEmitter();
-
-  constructor() {
+  constructor(private vBoardService: KeyboardRunnerService) {
   }
 
   ngOnInit(): void {
   }
 
   keyAdapter(virtualKey: any): void{
-    let realKey: KeyboardEvent;
+    let key: KeyboardEvent;
     if (!virtualKey.target.textContent){
       return;
     }
     
-    realKey = new KeyboardEvent("keydown", {
+    key = new KeyboardEvent("keydown", {
       "key": virtualKey.target.textContent
     });
-    this.keyboardClicked.emit(realKey);
+    this.vBoardService.clickKey(key);
   }
 
 }
