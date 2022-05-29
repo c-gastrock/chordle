@@ -17,8 +17,8 @@ export class ChordInputComponent implements OnInit {
   selected: number;
   numChords: number;
 
-  @Input()
-  virtualBoard: VirtualKeyboardComponent;
+  //@Input()
+  //virtualBoard: VirtualKeyboardComponent;
   parser = (e: KeyboardEvent) => this.parseKeyboard(e);
 
   constructor() {
@@ -26,7 +26,7 @@ export class ChordInputComponent implements OnInit {
     this.numChords = 5;
     this.chords = [];
 
-    this.virtualBoard = new VirtualKeyboardComponent();
+    //this.virtualBoard = new VirtualKeyboardComponent();
   }
 
   ngOnInit(): void {
@@ -38,8 +38,7 @@ export class ChordInputComponent implements OnInit {
 
   reset(): void {
     this.selected = 0;
-    //document.removeEventListener("keydown", this.parser);
-    //document.addEventListener("keydown", this.parser);
+    document.removeEventListener("keydown", this.parser);
   }
 
   /**
@@ -55,8 +54,6 @@ export class ChordInputComponent implements OnInit {
    */
 
   parseKeyboard(input: any): void{
-
-    console.log(input);
 
     let key: string = input.key;
 

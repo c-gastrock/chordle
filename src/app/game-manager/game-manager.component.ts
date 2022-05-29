@@ -38,7 +38,7 @@ export class GameManagerComponent implements OnInit {
     }
 
     this.rows[this.activeRow] = this.userInput.chords;
-    console.log(this.rows[this.activeRow]);
+    this.userInput.reset();
     this.activeRow++;
   }
 }
