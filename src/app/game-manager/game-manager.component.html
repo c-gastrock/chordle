@@ -8,7 +8,9 @@
         </app-chord>
     </div>
 
-    <app-chord-input *ngIf="i == activeRow"></app-chord-input>
+    <app-chord-input
+    *ngIf="i == activeRow">
+    </app-chord-input>
 
     <div class="chord-row" *ngIf="i > activeRow">
         <app-chord
@@ -16,3 +18,6 @@
         </app-chord>
     </div>
 </div>
+
+<app-virtual-keyboard>
+</app-virtual-keyboard>

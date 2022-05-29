@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ChordComponent } from '../chord/chord.component';
+import { VirtualKeyboardComponent } from '../virtual-keyboard/virtual-keyboard.component';
 
 // export abstract class InputStrategy {
 //   abstract 
@@ -16,19 +17,22 @@ export class ChordInputComponent implements OnInit {
   selected: number;
   numChords: number;
 
+  @Input()
+  virtualBoard: VirtualKeyboardComponent;
   parser = (e: KeyboardEvent) => this.parseKeyboard(e);
 
   constructor() {
     this.selected = 0;
     this.numChords = 5;
     this.chords = [];
+
+    this.virtualBoard = new VirtualKeyboardComponent();
   }
 
   ngOnInit(): void {
     for (let i: number = 0; i < this.numChords; i++){
       this.chords.push(new ChordComponent());
     }
-    //document.addEventListener("keydown", (e) => this.parseKeyboard(e));
     document.addEventListener("keydown", this.parser);
   }
 
@@ -50,7 +54,9 @@ export class ChordInputComponent implements OnInit {
    * USER PRESSES: 'ArrowRight' > '4' > 'W' (or 'W' > '4'; order does not matter).
    */
 
-  parseKeyboard(input: KeyboardEvent): void{
+  parseKeyboard(input: any): void{
+
+    console.log(input);
 
     let key: string = input.key;
 
@@ -66,19 +72,15 @@ export class ChordInputComponent implements OnInit {
     if (qualityRgx.test(key)){
       switch(key.toLowerCase()){
         case('q'):
-        case("Dim"): // tightly coupled, change this
           this.chords[this.selected].setQuality("dim");
           break;
         case('w'):
-        case("Min"):
           this.chords[this.selected].setQuality("min");
           break;
         case('e'):
-        case("Maj"):
           this.chords[this.selected].setQuality("maj");
           break;
         case('r'):
-        case("Aug"):
           this.chords[this.selected].setQuality("aug");
           break;
       }

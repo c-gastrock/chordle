@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild} from '@angular/core';
+import { Component, OnInit, ViewChild, Output} from '@angular/core';
 import { ChordInputComponent } from '../chord-input/chord-input.component';
 import { ChordComponent } from '../chord/chord.component';
 
