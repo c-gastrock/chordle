@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { KeyboardRunnerService } from '../keyboard-runner.service';
 
+// Not an ideal implementation; chordinput class needs to know about this adapter.
+
 @Component({
   selector: 'app-virtual-keyboard',
   templateUrl: './virtual-keyboard.component.html',
@@ -21,7 +23,7 @@ export class VirtualKeyboardComponent implements OnInit {
     }
     
     key = new KeyboardEvent("keydown", {
-      "key": virtualKey.target.textContent
+      "key": virtualKey.target.value
     });
     this.vBoardService.clickKey(key);
   }
