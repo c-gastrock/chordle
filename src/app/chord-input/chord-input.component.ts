@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { ChordComponent } from '../chord/chord.component';
-import { VirtualKeyboardComponent } from '../virtual-keyboard/virtual-keyboard.component';
+import { KeyboardRunnerService } from '../keyboard-runner.service';
 
 // export abstract class InputStrategy {
 //   abstract 
@@ -20,13 +21,13 @@ export class ChordInputComponent implements OnInit {
   //@Input()
   //virtualBoard: VirtualKeyboardComponent;
   parser = (e: KeyboardEvent) => this.parseKeyboard(e);
+  kbSubscription: Subscription;
 
-  constructor() {
+  constructor(private vBoardService: KeyboardRunnerService) {
     this.selected = 0;
     this.numChords = 5;
     this.chords = [];
-
-    //this.virtualBoard = new VirtualKeyboardComponent();
+    this.kbSubscription = Subscription.EMPTY;
   }
 
   ngOnInit(): void {
@@ -34,11 +35,18 @@ export class ChordInputComponent implements OnInit {
       this.chords.push(new ChordComponent());
     }
     document.addEventListener("keydown", this.parser);
+
+    this.kbSubscription = this.vBoardService.onKeyClicked().subscribe(
+      (key) => {
+        this.parseKeyboard(key)
+      }
+    );
   }
 
   reset(): void {
     this.selected = 0;
     document.removeEventListener("keydown", this.parser);
+    this.kbSubscription.unsubscribe();
   }
 
   /**
@@ -96,4 +104,6 @@ export class ChordInputComponent implements OnInit {
       this.selected == this.numChords - 1 ? this.selected = this.numChords - 1 : this.selected++;
     }
   }
+
+
 }

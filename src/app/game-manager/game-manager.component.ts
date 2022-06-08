@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, Output} from '@angular/core';
 import { ChordInputComponent } from '../chord-input/chord-input.component';
 import { ChordComponent } from '../chord/chord.component';
+import { KeyboardRunnerService } from '../keyboard-runner.service';
 
 @Component({
   selector: 'app-game-manager',
@@ -17,7 +18,7 @@ export class GameManagerComponent implements OnInit {
 
   constructor() {
     this.rows = new Array<Array<ChordComponent>>(6);
-    this.userInput = new ChordInputComponent();
+    this.userInput = new ChordInputComponent(new KeyboardRunnerService());
     this.activeRow = 0;
   }
 
