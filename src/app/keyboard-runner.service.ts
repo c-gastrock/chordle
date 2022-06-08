@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from "rxjs";
 
+/*
+* currently normal kb input works, but keyboard runner doesn't die upon user
+* entering a line (still inputs in old line).
+*/
+
 @Injectable({
   providedIn: 'root'
 })
